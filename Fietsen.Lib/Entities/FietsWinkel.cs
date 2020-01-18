@@ -11,12 +11,6 @@ namespace Fietsen.Lib.Entities
         public string Naam { get; set; }
         public List<Fiets> Fietsen { get; set; }
 
-        public FietsWinkel(string naam)
-        {
-            Fietsen = new List<Fiets>();
-            Naam = naam;
-        }
-
         public FietsWinkel(string naam, bool metTestData = true)
         {
             if (metTestData) MaakTestData();
@@ -33,6 +27,55 @@ namespace Fietsen.Lib.Entities
                 new Fiets("Bamboo", 0, 3, true),
                 new Fiets("Orbea", 10)
             };
+        }
+
+        public bool SlaOp(Fiets opTeSlaan)
+        {
+            bool isGelukt = true;
+            if (!IsBestaandeFiets(opTeSlaan))
+            {
+                Fietsen.Add(opTeSlaan);
+            }
+            else
+            {
+                int index = GeefIndexVanFiets(opTeSlaan);
+                Fietsen[index] = opTeSlaan;
+            }
+
+            return isGelukt;
+        }
+
+        int GeefIndexVanFiets(Fiets fiets)
+        {
+            int index = -1;
+            for (int i = 0; i < Fietsen.Count; i++)
+            {
+                if (Fietsen[i].Id == fiets.Id)
+                {
+                    index = i;
+                    break;
+                }
+            }
+            return index;
+        }
+
+        bool IsBestaandeFiets(Fiets fiets)
+        {
+            bool bestaat = false;
+            foreach (Fiets velo in Fietsen)
+            {
+                if (velo.Id == fiets.Id)
+                {
+                    bestaat = true;
+                    break;
+                }
+            }
+            return bestaat;
+        }
+
+        public void Verwijder(Fiets teVerwijderen)
+        {
+            Fietsen.Remove(teVerwijderen);
         }
 
         public override string ToString()

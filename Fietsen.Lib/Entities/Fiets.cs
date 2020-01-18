@@ -8,6 +8,8 @@ namespace Fietsen.Lib.Entities
 {
     public class Fiets
     {
+        static Random random = new Random();
+
         public Guid Id { get; set; }
 
         public int AantalWielen { get; set; }
@@ -24,25 +26,13 @@ namespace Fietsen.Lib.Entities
             bool metBatterij = false, DateTime? aangekochtOp = null, Guid? id = null)
         {
             Merk = make;
-            Snelheid = speed;
             AantalWielen = aantalWielen;
             IsElektrisch = metBatterij;
-            if (aangekochtOp == null)
-            {
-                AankoopDatum = DateTime.Now;
-            }
-            else
-            {
-                AankoopDatum = (DateTime)aangekochtOp;
-            }
-            if (id == null)
-            {
-                Id = Guid.NewGuid();
-            }
-            else
-            {
-                Id = (Guid)id;
-            }
+
+            Snelheid = (speed == 0) ? Snelheid = random.Next(0, 41) : speed;
+
+            AankoopDatum = (aangekochtOp == null) ? DateTime.Now : (DateTime)aangekochtOp;
+            Id = (id == null) ? Guid.NewGuid() : (Guid)id;
         }
 
         public override string ToString()

@@ -23,6 +23,7 @@ namespace BikiAficionado.Wpf
     {
         List<FietsWinkel> winkels;
         FietsWinkel huidigeFietsWinkel;
+        Fiets huidigeFiets;
 
         public MainWindow()
         {
@@ -50,6 +51,100 @@ namespace BikiAficionado.Wpf
         {
             lstFietsen.ItemsSource = huidigeFietsWinkel.Fietsen;
             lstFietsen.Items.Refresh();
+        }
+
+        private void cmbWinkel_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            huidigeFietsWinkel = (FietsWinkel)cmbWinkel.SelectedItem;
+
+            KoppelLstFietsen();
+            lstFietsen.SelectedItem = null;
+        }
+
+        private void lstFietsen_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lstFietsen.SelectedItem != null)
+            {
+                huidigeFiets = (Fiets)lstFietsen.SelectedItem;
+                txtMerk.Text = huidigeFiets.Merk;
+                dtpAankoopDatum.SelectedDate = huidigeFiets.AankoopDatum;
+                chkElektrisch.IsChecked = huidigeFiets.IsElektrisch;
+                cmbAantalWielen.SelectedItem = huidigeFiets.AantalWielen;
+                txtSnelheid.Text = huidigeFiets.Snelheid.ToString();
+            }
+            else
+            {
+                ClearPanel(grdInput);
+                huidigeFiets = null;
+            }
+        }
+
+        private void btnVoegWinkelToe_Click(object sender, RoutedEventArgs e)
+        {
+            string fietsWinkelNaam = txtWinkelNaam.Text;
+            try
+            {
+                FietsWinkel nieuweFietsWinkel = new FietsWinkel(fietsWinkelNaam, false);
+                winkels.Add(nieuweFietsWinkel);
+
+                cmbWinkel.Items.Refresh();
+                cmbWinkel.SelectedItem = nieuweFietsWinkel;
+
+                txtWinkelNaam.Clear();
+                ToonMelding("De winkel is aangemaakt", true);
+                txtWinkelNaam.Clear();
+            }
+            catch (Exception ex)
+            {
+                ToonMelding(ex.Message);
+            }
+        }
+
+        private void btnSlaOp_Click(object sender, RoutedEventArgs e)
+        {
+            string merk = txtMerk.Text;
+            int wielen = (int)cmbAantalWielen.SelectedItem;
+            bool? aangevinkt = chkElektrisch.IsChecked;
+            DateTime? aangekocht = dtpAankoopDatum.SelectedDate;
+            float snelheid = 0;
+            try
+            {
+                snelheid = float.Parse(txtSnelheid.Text);
+                tbkFeedBack.Visibility = Visibility.Hidden;
+            }
+            catch (Exception)
+            {
+                ToonMelding("De input in de snelheid is ongeldig");
+            }
+            try
+            {
+                Guid? id = (huidigeFiets == null) ?
+                    null :
+                    (Guid?)huidigeFiets.Id;
+
+                Fiets fiets = new Fiets(merk, snelheid, wielen, (bool)aangevinkt, aangekocht, id);
+                if (huidigeFietsWinkel.SlaOp(fiets))
+                {
+                    tbkFeedBack.Visibility = Visibility.Hidden;
+                    KoppelLstFietsen();
+                    lstFietsen.SelectedIndex = -1;
+                    ClearPanel(grdInput);
+                }
+                else
+                {
+                    ToonMelding("De fiets bestaat reeds");
+                }
+            }
+            catch (Exception ex)
+            {
+                ToonMelding(ex.Message);
+            }
+            }
+
+        private void btnNieuw_Click(object sender, RoutedEventArgs e)
+        {
+            lstFietsen.SelectedItem = null;
+            txtMerk.Focus();
         }
     }
 }

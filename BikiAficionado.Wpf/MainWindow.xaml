@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="407.935" Width="467.391" Loaded="Window_Loaded">
     <Grid >
-        <ListBox x:Name="lstFietsen" HorizontalAlignment="Left" Height="160" Margin="10,64,0,0" VerticalAlignment="Top" Width="150"/>
+        <ListBox x:Name="lstFietsen" HorizontalAlignment="Left" Height="160" Margin="10,64,0,0" VerticalAlignment="Top" Width="150" SelectionChanged="lstFietsen_SelectionChanged"/>
         <Label x:Name="lblTitel" Content="" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="150"/>
         <Label Content="Merk" HorizontalAlignment="Left" Margin="187,64,0,0" VerticalAlignment="Top" Width="120"/>
         <Label Content="Snelheid" HorizontalAlignment="Left" Margin="187,183,0,0" VerticalAlignment="Top" Width="120"/>
@@ -21,12 +21,12 @@
             <CheckBox x:Name="chkElektrisch" Content="" HorizontalAlignment="Left" Margin="0,61,0,0" VerticalAlignment="Top"/>
             <DatePicker x:Name="dtpAankoopDatum" HorizontalAlignment="Left" Margin="1,86,0,0" VerticalAlignment="Top" Width="120"/>
         </Grid>
-        <ComboBox x:Name="cmbWinkel" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="150"/>
+        <ComboBox x:Name="cmbWinkel" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="150" SelectionChanged="cmbWinkel_SelectionChanged"/>
         <TextBox x:Name="txtWinkelNaam" HorizontalAlignment="Left" Height="23" Margin="183,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btnVoegWinkelToe" Content="+" HorizontalAlignment="Left" Margin="312,29,0,0" VerticalAlignment="Top" Width="27" Height="27"/>
-        <Button x:Name="btnNieuw" Content="Nieuw" HorizontalAlignment="Left" Margin="192,217,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnVoegWinkelToe" Content="+" HorizontalAlignment="Left" Margin="312,29,0,0" VerticalAlignment="Top" Width="27" Height="27" Click="btnVoegWinkelToe_Click"/>
+        <Button x:Name="btnNieuw" Content="Nieuw" HorizontalAlignment="Left" Margin="192,217,0,0" VerticalAlignment="Top" Width="75" Click="btnNieuw_Click"/>
         <Button x:Name="btnVerwijder" Content="Verwijder" HorizontalAlignment="Left" Margin="357,217,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="btnSlaOp" Content="Sla Op" HorizontalAlignment="Left" Margin="275,217,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnSlaOp" Content="Sla Op" HorizontalAlignment="Left" Margin="275,217,0,0" VerticalAlignment="Top" Width="75" Click="btnSlaOp_Click"/>
         <TextBlock x:Name="tbkFeedBack" HorizontalAlignment="Left" Margin="10,253,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="102" Width="422" Background="#FFDFF9F2" Foreground="#FFFBFBFB" Padding="5"/>
 
     </Grid>
