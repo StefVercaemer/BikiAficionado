@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Fietsen.Lib.Entities;
 
 namespace BikiAficionado.Wpf
 {
@@ -20,9 +21,18 @@ namespace BikiAficionado.Wpf
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<FietsWinkel> winkels;
+        FietsWinkel huidigeFietsWinkel;
+
         public MainWindow()
         {
             InitializeComponent();
+            winkels = new List<FietsWinkel>
+            {
+                new FietsWinkel("Het velootje")
+            };
+            huidigeFietsWinkel = winkels[0];
         }
+
     }
 }
