@@ -17,10 +17,27 @@ namespace Fietsen.Lib.Entities
             Naam = naam;
         }
 
+        public FietsWinkel(string naam, bool metTestData = true)
+        {
+            if (metTestData) MaakTestData();
+            else Fietsen = new List<Fiets>();
+
+            Naam = naam;
+        }
+
+        void MaakTestData()
+        {
+            Fietsen = new List<Fiets>
+            {
+                new Fiets("Trek", 20.5F, 2),
+                new Fiets("Bamboo", 0, 3, true),
+                new Fiets("Orbea", 10)
+            };
+        }
+
         public override string ToString()
         {
             return $"{Naam} {Fietsen.Count} fietsen";
         }
-
     }
 }
