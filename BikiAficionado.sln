@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikiAficionado.Wpf", "BikiAficionado.Wpf\BikiAficionado.Wpf.csproj", "{8C6E38CA-8886-4AD6-922B-B0FB2DE230E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fietsen.Lib", "Fietsen.Lib\Fietsen.Lib.csproj", "{9A629318-ED2F-46A0-BD4C-758F54F75D84}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8C6E38CA-8886-4AD6-922B-B0FB2DE230E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C6E38CA-8886-4AD6-922B-B0FB2DE230E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C6E38CA-8886-4AD6-922B-B0FB2DE230E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C6E38CA-8886-4AD6-922B-B0FB2DE230E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A629318-ED2F-46A0-BD4C-758F54F75D84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A629318-ED2F-46A0-BD4C-758F54F75D84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A629318-ED2F-46A0-BD4C-758F54F75D84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A629318-ED2F-46A0-BD4C-758F54F75D84}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ADBD56A6-31EA-4500-8930-6BDDC78194E0}
+	EndGlobalSection
+EndGlobal
