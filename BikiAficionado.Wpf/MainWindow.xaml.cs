@@ -34,5 +34,22 @@ namespace BikiAficionado.Wpf
             huidigeFietsWinkel = winkels[0];
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            KoppelLstFietsen();
+            cmbWinkel.ItemsSource = winkels;
+            cmbWinkel.SelectedIndex = 0;
+
+            for (int i = 0; i < 5; i++)
+            {
+                cmbAantalWielen.Items.Add(i);
+            }
+        }
+
+        private void KoppelLstFietsen()
+        {
+            lstFietsen.ItemsSource = huidigeFietsWinkel.Fietsen;
+            lstFietsen.Items.Refresh();
+        }
     }
 }
