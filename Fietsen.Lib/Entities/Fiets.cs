@@ -19,5 +19,32 @@ namespace Fietsen.Lib.Entities
         public string Merk { get; set; }
 
         public float Snelheid { get; set; }
+
+        public Fiets(string make, float speed = 0, int aantalWielen = 2,
+            bool metBatterij = false, DateTime? aangekochtOp = null, Guid? id = null)
+        {
+            Merk = make;
+            Snelheid = speed;
+            AantalWielen = aantalWielen;
+            IsElektrisch = metBatterij;
+            if (aangekochtOp == null)
+            {
+                AankoopDatum = DateTime.Now;
+            }
+            else
+            {
+                AankoopDatum = (DateTime)aangekochtOp;
+            }
+            if (id == null)
+            {
+                Id = Guid.NewGuid();
+            }
+            else
+            {
+                Id = (Guid)id;
+            }
+        }
+
+
     }
 }
