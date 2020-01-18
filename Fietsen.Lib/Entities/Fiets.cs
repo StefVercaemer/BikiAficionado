@@ -45,6 +45,10 @@ namespace Fietsen.Lib.Entities
             }
         }
 
+        public override string ToString()
+        {
+            return $"{Merk} {Snelheid} km/u.";
+        }
 
     }
 }
